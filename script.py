@@ -54,7 +54,7 @@ for i, row in df.iterrows():
                 window = 1
 
         else:
+            input("END. Press enter to quit...")
             browser.quit()
-            print("end")
 
         break
