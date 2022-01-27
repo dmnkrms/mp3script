@@ -6,6 +6,8 @@ from selenium.webdriver.common.keys import Keys
 
 fileName = input("Enter .csv file name and press ENTER:")
 df = pd.read_csv(f"{fileName}.csv")
+df.columns.values[0] = "trackName"
+df.columns.values[1] = "artistName"
 df.columns.values[3] = "playlistName"
 
 playlistName = df['playlistName'][0]
@@ -30,7 +32,7 @@ for i, row in df.iterrows():
         browser.switch_to.window(browser.window_handles[window])
         window += 1
         searchField = browser.find_element(By.ID, 'q')
-        searchField.send_keys(f"{row['Artist name']} {row['Track name']}")
+        searchField.send_keys(f"{row['artistName']} {row['trackName']}")
         searchField.send_keys(Keys.ENTER)
 
         if i+1 < rows:
